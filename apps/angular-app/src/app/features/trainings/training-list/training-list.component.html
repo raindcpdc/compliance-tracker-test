@@ -1,0 +1,71 @@
+<div>
+  <div class="flex flex-col space-y-1.5 py-6">
+    <div class="grid grid-cols-2">
+      <div class="col-span-1">
+        <h1 class="font-semibold tracking-tight text-2xl">Manage trainings</h1>
+        <p class="text-sm text-muted-foreground">
+          Add, edit, or remove trainings
+        </p>
+      </div>
+      <div class="col-span-1 flex justify-end">
+        <spartan-button
+          icon="lucidePlus"
+          [disabled]="loading"
+          (click)="onOpenAddTraining()"
+          >Add training</spartan-button
+        >
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading; else trainingListTable" class="text-center">
+    <hlm-spinner />
+  </div>
+
+  <ng-template #trainingListTable>
+    <hlm-table class="w-full min-w-[400px]">
+      <hlm-trow>
+        <hlm-th class="w-5/12 font-bold">NAME</hlm-th>
+        <hlm-th class="w-2/12 font-bold">DESCRIPTION</hlm-th>
+        <hlm-th class="w-2/12 font-bold">MANDATORY</hlm-th>
+        <hlm-th class="w-2/12 font-bold">DUE DATE</hlm-th>
+        <hlm-th class="justify-end w-1/12 font-bold">ACTIONS</hlm-th>
+      </hlm-trow>
+      <!-- When list is empty -->
+      <div
+        *ngIf="!loading && trainingsData.length === 0"
+        class="text-center my-5 text-gray-500"
+      >
+        No trainings available.
+      </div>
+      <hlm-trow *ngFor="let training of trainingsData">
+        <hlm-td truncate class="font-medium w-5/12">{{
+          training.trainingName
+        }}</hlm-td>
+        <hlm-td class="w-2/12">{{ training.trainingDesc }}</hlm-td>
+        <hlm-td class="w-2/12">{{
+          training.isMandatory ? "Yes" : "No"
+        }}</hlm-td>
+        <hlm-td class="flex-1">{{
+          training.dueDate | date : "MMM dd, YYYY"
+        }}</hlm-td>
+        <hlm-td class="justify-end">
+          <div class="grid grid-cols-2 gap-2">
+            <spartan-button
+              (click)="onOpenEditTraining(training)"
+              variant="outline"
+              icon="lucidePencil"
+              [hasIconMarginRight]="false"
+            ></spartan-button>
+            <spartan-button
+              (click)="onOpenRemoveTraining(training)"
+              variant="destructive"
+              icon="lucideTrash2"
+              [hasIconMarginRight]="false"
+            ></spartan-button>
+          </div>
+        </hlm-td>
+      </hlm-trow>
+    </hlm-table>
+  </ng-template>
+</div>

@@ -1,0 +1,6 @@
+<div class="flex flex-col space-y-1.5 text-center sm:text-left mb-5">
+	<h1 class="text-lg font-semibold leading-none tracking-tight">Add training</h1>
+	<p class="text-sm text-muted-foreground">Enter details for the new training.</p>
+</div>
+
+<app-form-builder [fields]="formFields" [loading]="loading" (formSubmit)="handleFormSubmit($event)"></app-form-builder>

@@ -1,0 +1,22 @@
+<div class="flex gap-5 flex-col space-y-1.5 text-center sm:text-left">
+  <h1 class="text-lg font-semibold leading-none tracking-tight">Confirm</h1>
+  <p>
+    Confirm disable <span class="font-semibold">"{{ trainingName }}"?</span>
+  </p>
+  <div class="flex justify-end gap-2">
+    <spartan-button
+      (click)="onCancelClick()"
+      variant="outline"
+      [hasIconMarginRight]="false"
+      [disabled]="loading"
+      >Cancel</spartan-button
+    >
+    <spartan-button
+      (click)="handleDisableTraining()"
+      variant="destructive"
+      [hasIconMarginRight]="false"
+      [disabled]="loading"
+      >Ok</spartan-button
+    >
+  </div>
+</div>

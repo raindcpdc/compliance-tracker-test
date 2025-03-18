@@ -1,0 +1,105 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="space-y-4">
+  <div *ngFor="let field of fields" class="flex flex-col gap-2">
+    <label
+      hlmLabel
+      [for]="field.name"
+      class="font-medium"
+      *ngIf="field.type !== 'checkbox'"
+      >{{ field.label }}</label
+    >
+
+    <!-- Input Fields -->
+    <input
+      hlmInput
+      *ngIf="
+        field.type === 'text' ||
+        field.type === 'email' ||
+        field.type === 'password' ||
+        field.type === 'number' ||
+        field.type === 'url' ||
+        field.type === 'tel'
+      "
+      [type]="field.type"
+      [formControlName]="field.name"
+      variant="outline"
+      [placeholder]="field.placeholder || ''"
+      class="w-full"
+    />
+
+    <!-- Textarea -->
+    <textarea
+      hlmInput
+      *ngIf="field.type === 'textarea'"
+      [formControlName]="field.name"
+      rows="4"
+      [placeholder]="field.placeholder || ''"
+      class="w-full"
+    ></textarea>
+
+    <!-- Select Dropdown -->
+    <brn-select
+      *ngIf="field.type === 'select'"
+      [formControlName]="field.name"
+      class="inline-block"
+      [placeholder]="getSelectedResourceType(field) || field.placeholder || ''"
+    >
+      <hlm-select-trigger class="w-full">
+        <hlm-select-value />
+      </hlm-select-trigger>
+      <hlm-select-content>
+        <hlm-option *ngFor="let option of field.options" [value]="option.value">
+          {{ option.label }}
+        </hlm-option>
+      </hlm-select-content>
+    </brn-select>
+
+    <!-- Checkbox -->
+    <label *ngIf="field.type === 'checkbox'" class="flex items-center" hlmLabel>
+      <hlm-checkbox class="mr-2" [formControlName]="field.name" />
+      {{ field.label }}
+    </label>
+
+    <!-- Radio Buttons -->
+    <div *ngIf="field.type === 'radio'" class="flex flex-col gap-2">
+      <div *ngFor="let option of field.options" class="flex items-center gap-2">
+        <input
+          type="radio"
+          [formControlName]="field.name"
+          [value]="option.value"
+        />
+        <label>{{ option.label }}</label>
+      </div>
+    </div>
+
+    <!-- Calendar (Date Picker) -->
+    <div *ngIf="field.type === 'date'" class="flex flex-col gap-2">
+      <input
+        hlmInput
+        type="date"
+        [formControlName]="field.name"
+        [placeholder]="field.placeholder || ''"
+        variant="outline"
+        class="w-full block p-2 border rounded-md"
+        [value]="field.value"
+      />
+    </div>
+
+    <!-- Error Messages -->
+    <p
+      *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched"
+      class="text-red-500 text-sm"
+    >
+      {{ getErrorMessage(field.name, field.type) }}
+    </p>
+  </div>
+
+  <button
+    hlmBtn
+    type="submit"
+    variant="default"
+    [disabled]="loading"
+    class="w-full"
+  >
+    Submit
+  </button>
+</form>

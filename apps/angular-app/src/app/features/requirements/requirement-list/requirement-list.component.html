@@ -1,0 +1,67 @@
+<div>
+  <div class="flex flex-col space-y-1.5 py-6">
+    <div class="grid grid-cols-2">
+      <div class="col-span-1">
+        <h1 class="font-semibold tracking-tight text-2xl">
+          Manage requirements
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Add, edit, or remove requirements
+        </p>
+      </div>
+      <div class="col-span-1 flex justify-end">
+        <spartan-button icon="lucidePlus" [disabled]="loading"
+          >Add requirement</spartan-button
+        >
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading; else requirementListTable" class="text-center">
+    <hlm-spinner />
+  </div>
+
+  <ng-template #requirementListTable>
+    <hlm-table class="grid grid-cols-12">
+      <hlm-trow class="col-span-12 grid grid-cols-12">
+        <hlm-th class="col-span-3">NAME</hlm-th>
+        <hlm-th class="col-span-4">DESCRIPTION</hlm-th>
+        <hlm-th class="col-span-2">DUE DATE</hlm-th>
+        <hlm-th class="col-span-3 justify-end">ACTIONS</hlm-th>
+      </hlm-trow>
+      <!-- When list is empty -->
+      <div
+        *ngIf="!loading && requirementsData.length === 0"
+        class="col-span-12 text-center my-5 text-gray-500"
+      >
+        No requirements available.
+      </div>
+      <hlm-trow
+        *ngFor="let requirement of requirementsData"
+        class="col-span-12 grid grid-cols-12"
+      >
+        <hlm-td class="font-medium col-span-3">{{
+          requirement.requirementName
+        }}</hlm-td>
+        <hlm-td class="col-span-4">{{ requirement.requirementDesc }}</hlm-td>
+        <hlm-td class="col-span-2">{{
+          requirement.dueDate | date : "MMM dd, YYYY"
+        }}</hlm-td>
+        <hlm-td class="col-span-3 justify-end">
+          <div class="grid grid-cols-2 gap-2">
+            <spartan-button
+              variant="outline"
+              icon="lucidePencil"
+              [hasIconMarginRight]="false"
+            ></spartan-button>
+            <spartan-button
+              variant="destructive"
+              icon="lucideTrash2"
+              [hasIconMarginRight]="false"
+            ></spartan-button>
+          </div>
+        </hlm-td>
+      </hlm-trow>
+    </hlm-table>
+  </ng-template>
+</div>

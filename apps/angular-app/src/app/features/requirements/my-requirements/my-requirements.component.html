@@ -1,0 +1,108 @@
+<div>
+  <div class="flex flex-col space-y-1.5 py-6">
+    <div class="grid">
+      <div class="col-span-1">
+        <h1 class="font-semibold tracking-tight text-2xl">
+          Your Assigned Requirements
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Track and update progress on assigned requirements
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <!-- Progress bar -->
+    <div class="flex flex-col gap-2">
+      <p class="text-sm font-medium">Overall completion</p>
+      <brn-progress
+        class="h-3 bg-secondary relative overflow-hidden rounded-full"
+        [value]="progress"
+      >
+        <brn-progress-indicator
+          class="rounded-full absolute transition-none"
+          hlm
+        />
+      </brn-progress>
+      <p class="text-sm text-muted-foreground">
+        {{ requirementsCompleted }} of {{ requirementsTotal }} requirements
+        completed
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <hlm-table class="grid grid-cols-12">
+        <hlm-trow class="col-span-12 grid grid-cols-12">
+          <hlm-th class="col-span-5">Requirement</hlm-th>
+          <hlm-th class="col-span-2">Due date</hlm-th>
+          <hlm-th class="col-span-3">Status</hlm-th>
+          <hlm-th class="col-span-2">Actions</hlm-th>
+        </hlm-trow>
+        <div
+          *ngIf="loading; else myRequirementListTable"
+          class="col-span-12 flex justify-center p-5"
+        >
+          <hlm-spinner />
+        </div>
+        <!-- When list is empty -->
+        <div
+          *ngIf="!loading && myRequirementsData.length === 0"
+          class="col-span-12 text-center my-5 text-gray-500"
+        >
+          No Requirements assigned.
+        </div>
+        <ng-template #myRequirementListTable>
+          <hlm-trow
+            *ngFor="let requirement of myRequirementsData"
+            class="col-span-12 grid grid-cols-12"
+          >
+            <hlm-td class="col-span-5 flex flex-col items-start">
+              <a
+                class="font-medium text-base"
+                [href]="requirement.requirementUrl"
+                target="_blank"
+                >{{ requirement.requirementName }}</a
+              >
+              <p className="text-sm text-muted-foreground">
+                {{ requirement.requirementDesc }}
+              </p>
+            </hlm-td>
+            <hlm-td class="col-span-2">{{
+              requirement.dueDate | date : "MMM dd, YYYY"
+            }}</hlm-td>
+            <hlm-td class="col-span-3">{{ requirement.status }}</hlm-td>
+            <hlm-td class="col-span-2">
+              <brn-select
+                class="inline-block w-full"
+                [class.pointer-events-none]="updatingContent"
+                [class.text-gray-300]="updatingContent"
+                placeholder="Select"
+              >
+                <hlm-select-trigger class="w-full">
+                  <span>Select</span>
+                </hlm-select-trigger>
+                <hlm-select-content>
+                  <div *ngFor="let option of options">
+                    <hlm-option
+                      *ngIf="
+                        option.name.toLowerCase() !==
+                        requirement.status?.toLowerCase()
+                      "
+                      class="p-2 flex justify-center"
+                      [hasIcon]="false"
+                      [value]="option.value"
+                      (click)="optionSelect(requirement.id, option.value)"
+                    >
+                      {{ option.label }}
+                    </hlm-option>
+                  </div>
+                </hlm-select-content>
+              </brn-select>
+            </hlm-td>
+          </hlm-trow></ng-template
+        >
+      </hlm-table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1452 @@
+{
+	"info": {
+		"_postman_id": "da9383d0-3fe1-4716-88f0-744cbede1ecd",
+		"name": "Queries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40560037",
+		"_collection_link": "https://cloudy-comet-977345.postman.co/workspace/Team-Workspace~877cf3f1-81cd-4fd3-84e4-8edbc467b84c/collection/40560037-da9383d0-3fe1-4716-88f0-744cbede1ecd?action=share&source=collection_link&creator=40560037"
+	},
+	"item": [
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUsers {\n  userCollection {\n    edges {\n      node {\n        id\n        role_id        \n        last_name\n        first_name\n        email\n        is_active\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  userCollection {\n    edges {\n      node {\n        id\n        last_name\n        first_name\n        is_active\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 09:18:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f464e466a08db1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "75"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"userCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 1,\n                        \"is_active\": true,\n                        \"last_name\": \"Martian\",\n                        \"first_name\": \"Marvin\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User By ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUserByID($userId: Int!) {\n    userCollection(filter: { id: { eq: $userId } }) {\n        edges {\n            node {\n                id\n                role_id\n                first_name\n                last_name\n                email\n                is_active\n            }\n        }\n    }\n}\n",
+						"variables": "{\n    \"userId\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetUserByID($userId: Int!) {\n    userCollection(filter: { id: { eq: $userId } }) {\n        edges {\n            node {\n                id\n                role_id\n                first_name\n                last_name\n                email\n                is_active\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"userId\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 23 Dec 2024 07:26:49 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f66a0282ac0db1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "83"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"userCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 1,\n                        \"email\": \"martian@mars.com\",\n                        \"role_id\": 2,\n                        \"is_active\": true,\n                        \"last_name\": \"Martian\",\n                        \"first_name\": \"Marvin\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User Roles",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetUserRoles {\n    user_roleCollection {\n        edges {\n            node {\n                id\n                name\n                description\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query User_roleCollection {\n    user_roleCollection {\n        edges {\n            node {\n                id\n                name\n                description\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 23 Dec 2024 03:38:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f6551b15aabdb23-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "5"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "144"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"user_roleCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"manager\",\n                        \"description\": \"Lead role\"\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"Individual Contributor\",\n                        \"description\": \"IC Role\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Learning Resources",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLearningResources {\n  learning_resourceCollection {\n    edges {\n      node {\n        id\n        type_id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n            id\n            name\n            description\n        }\n        \n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  learning_resourceCollection {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n            name\n            description\n        }\n        \n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 11:40:49 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f471eb76c3fdb1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "5"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "391"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 1,\n                        \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                        \"deadline_at\": \"2023-12-31T15:55:00+00:00\",\n                        \"description\": \"Classroom type training\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Classroom\",\n                            \"description\": \"In person classroom training\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"DCPDC Privacy Policy 2024\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 4,\n                        \"name\": \"Next.js Conference\",\n                        \"deadline_at\": null,\n                        \"description\": \"Online conference\",\n                        \"is_mandatory\": false,\n                        \"learning_resource_type\": {\n                            \"name\": \"Virtual Classroom\",\n                            \"description\": \"Online classroom training\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Learning Resource Types",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLearningResourceTypes {\n    learning_resource_typeCollection {\n        edges {\n            node {\n                id\n                name\n                description\n            }\n        }\n    }\n}\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Learning_resource_typeCollection {\n    learning_resource_typeCollection {\n        edges {\n            node {\n                id\n                name\n                description\n            }\n        }\n    }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 23 Dec 2024 03:40:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f655507aa5adb24-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "88"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "176"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resource_typeCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 1,\n                        \"name\": \"Digital Learning\",\n                        \"description\": \"Online learning\"\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"Classroom\",\n                        \"description\": \"In person classroom training\"\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"Virtual Classroom\",\n                        \"description\": \"Online classroom training\"\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get LR's (Mandatory)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetMandatoryLearningResources{\n  learning_resourceCollection(filter: {is_mandatory: {eq: true}}) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n            name\n            description\n        }\n        created_at\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  learning_resourceCollection(filter: {is_mandatory: {eq: true}}) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n            name\n            description\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 11:41:01 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f471f045ff7db1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "342"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 1,\n                        \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                        \"deadline_at\": \"2023-12-31T15:55:00+00:00\",\n                        \"description\": \"Classroom type training\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Classroom\",\n                            \"description\": \"In person classroom training\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"DCPDC Privacy Policy 2024\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get LR's (Not Mandatory)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetNonMandatoryLearningResources {\n  learning_resourceCollection(filter: {is_mandatory: {eq: false}}) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        learning_resource_type {\n            name\n            description\n        }\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  learning_resourceCollection(filter: {is_mandatory: {eq: false}}) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        learning_resource_type {\n            name\n            description\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 11:41:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f471f5a7bcadb1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "175"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 4,\n                        \"name\": \"Next.js Conference\",\n                        \"description\": \"Online conference\",\n                        \"is_mandatory\": false,\n                        \"learning_resource_type\": {\n                            \"name\": \"Virtual Classroom\",\n                            \"description\": \"Online classroom training\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get LR's By Type",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLearningResourcesByType {\n  learning_resourceCollection(filter: {\n    is_mandatory: { eq: true }\n    type_id: {eq: 1}\n  }) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n        \tid\n          name\n          description\n        }\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  learning_resourceCollection(filter: {\n    is_mandatory: { eq: true }\n    type_id: {eq: 1}\n  }) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n        \tid\n          name\n          description\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 11:41:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f471fa70eecdb1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "5"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"DCPDC Privacy Policy 2024\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"id\": 1,\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"id\": 1,\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get LR's By Date",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetLearningResourcesByDate {\n  learning_resourceCollection(filter: {\n    is_mandatory: { eq: true }\n    deadline_at: {gt: \"2024-12-01\"}\n  }) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n        \tid\n          name\n          description\n        }\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  learning_resourceCollection(filter: {\n    is_mandatory: { eq: true }\n    deadline_at: {gt: \"2024-12-01\"}\n  }) {\n    edges {\n      node {\n        id\n        name\n        description\n        is_mandatory\n        deadline_at\n        learning_resource_type {\n        \tid\n          name\n          description\n        }\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 19 Dec 2024 11:41:43 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f472006184ddb1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": 2,\n                        \"name\": \"DCPDC Privacy Policy 2024\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"id\": 1,\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": 3,\n                        \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                        \"deadline_at\": \"2024-12-31T04:55:00+00:00\",\n                        \"description\": \"Online video\",\n                        \"is_mandatory\": true,\n                        \"learning_resource_type\": {\n                            \"id\": 1,\n                            \"name\": \"Digital Learning\",\n                            \"description\": \"Online learning\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Assigned LR's",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetAllAssignedLearningResources {\n  assigned_learning_resourceCollection {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetAllAssignedLearningResources {\n  assigned_learning_resourceCollection {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 14:25:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f92390c2df8db24-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "6"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "433"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"assigned_learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": \"1\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                            \"deadline_at\": \"2024-12-31T15:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"2\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"DCPDC Privacy Policy 2024\",\n                            \"deadline_at\": \"2024-12-31T04:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"3\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                            \"deadline_at\": \"2024-12-31T04:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"4\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"In Progress\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Next.js Conference\",\n                            \"deadline_at\": null\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"5\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T13:55:54.647244+00:00\",\n                        \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                        \"completed_at\": \"2025-01-02T15:55:00+00:00\",\n                        \"resource_status\": {\n                            \"name\": \"Completed\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                            \"deadline_at\": \"2024-12-31T15:55:00+00:00\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Assigned LR's By User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetAssignedLearningResourcesByUser ($userId: Int!)  {\n  assigned_learning_resourceCollection(filter: {user_id: {eq: $userId}}) {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+						"variables": "{\n    \"userId\": 1\n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetAssignedLearningResourcesByUser ($userId: Int!)  {\n  assigned_learning_resourceCollection(filter: {user_id: {eq: $userId}}) {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+								"variables": "{\n    \"userId\": 1\n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 14:38:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f924ab89e2cdb20-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "6"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "433"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"assigned_learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": \"1\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                            \"deadline_at\": \"2024-12-31T15:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"2\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"DCPDC Privacy Policy 2024\",\n                            \"deadline_at\": \"2024-12-31T04:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"3\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": null,\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"Not Started\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"2024 Global Anti-Corruption and Financial Crime Compliance Refresher\",\n                            \"deadline_at\": \"2024-12-31T04:55:00+00:00\"\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"4\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"In Progress\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Next.js Conference\",\n                            \"deadline_at\": null\n                        }\n                    }\n                },\n                {\n                    \"node\": {\n                        \"id\": \"5\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T13:55:54.647244+00:00\",\n                        \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                        \"completed_at\": \"2025-01-02T15:55:00+00:00\",\n                        \"resource_status\": {\n                            \"name\": \"Completed\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Ethics, Integrity and Sexual Harassment Training\",\n                            \"deadline_at\": \"2024-12-31T15:55:00+00:00\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Assigned LR's By User & Status",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query GetAssignedLearningResourcesByUser ($userId: Int!, $statusId: Int)  {\n  assigned_learning_resourceCollection(filter: { user_id: { eq: $userId }, status_id: { eq: $statusId } }) {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+						"variables": "{\n    \"userId\": 1,\n    \"statusId\": 2\n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetAssignedLearningResourcesByUser ($userId: Int!, $statusId: Int)  {\n  assigned_learning_resourceCollection(filter: { user_id: { eq: $userId }, status_id: { eq: $statusId } }) {\n    edges {\n      node {\n        id\n        user {\n          id\n          first_name\n          last_name\n        }\n        learning_resource {\n          name\n          deadline_at\n        }\n        resource_status {\n          name\n        }\n        started_at\n        created_at\n        completed_at\n      }\n    }\n  }\n}",
+								"variables": "{\n    \"userId\": 1,\n    \"statusId\": 2\n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 14:45:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f92552afbeedb1c-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "79"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "248"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"assigned_learning_resourceCollection\": {\n            \"edges\": [\n                {\n                    \"node\": {\n                        \"id\": \"4\",\n                        \"user\": {\n                            \"id\": 1,\n                            \"last_name\": \"Martian\",\n                            \"first_name\": \"Marvin\"\n                        },\n                        \"created_at\": \"2024-12-28T12:43:01.4992+00:00\",\n                        \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                        \"completed_at\": null,\n                        \"resource_status\": {\n                            \"name\": \"In Progress\"\n                        },\n                        \"learning_resource\": {\n                            \"name\": \"Next.js Conference\",\n                            \"deadline_at\": null\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{anon_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apiKey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

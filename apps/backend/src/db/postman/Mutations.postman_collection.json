@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "3ee5d59c-7b73-4fbe-ae23-40d182f3c764",
+		"name": "Mutations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40560037",
+		"_collection_link": "https://cloudy-comet-977345.postman.co/workspace/Team-Workspace~877cf3f1-81cd-4fd3-84e4-8edbc467b84c/collection/40560037-3ee5d59c-7b73-4fbe-ae23-40d182f3c764?action=share&source=collection_link&creator=40560037"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation InsertUser($input: userInsertInput!) {\n    insertIntouserCollection(objects: [$input]) {\n        affectedCount\n        records {\n            id\n            first_name\n            last_name\n            email\n            is_active\n        }\n    }\n}",
+						"variables": "{\n    \"input\": \n        {\n            \"role_id\": 2,\n            \"first_name\": \"Sopas\",\n            \"last_name\": \"Soup\",\n            \"email\": \"sopas@abc.com\",\n            \"is_active\": true\n        }\n    \n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation UpdateUser($userId: Int!, $user: userUpdateInput!) {\n    updateuserCollection(\n        set: $user, \n        atMost: 1, \n        filter: { id: { eq: $userId } }) \n        {\n            affectedCount\n            records {\n                id\n                role_id\n                first_name\n                last_name\n                email\n                is_active\n            }\n        }\n}\n",
+						"variables": "{\n    \"userId\": 3,\n    \"user\": \n        {\n            \"role_id\": 1,\n            \"first_name\": \"Nata1\",\n            \"last_name\": \"De Coco1\",\n            \"email\": \"nata1@abc.com\",\n            \"is_active\": true\n        }\n    \n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation UpdateUser($userId: Int!, $user: userUpdateInput!) {\n    updateuserCollection(\n        set: $user, \n        atMost: 1, \n        filter: { id: { eq: $userId } }) \n        {\n            affectedCount\n            records {\n                id\n                role_id\n                first_name\n                last_name\n                email\n                is_active\n            }\n        }\n}\n",
+								"variables": "{\n    \"userId\": 3,\n    \"user\": \n        {\n            \"role_id\": 2,\n            \"first_name\": \"Nata1\",\n            \"last_name\": \"De Coco1\",\n            \"email\": \"nata1@abc.com\",\n            \"is_active\": true\n        }\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 23 Dec 2024 07:23:13 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f669ae17972db1f-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "77"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "156"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"updateuserCollection\": {\n            \"records\": [\n                {\n                    \"id\": 3,\n                    \"email\": \"nata1@abc.com\",\n                    \"role_id\": 2,\n                    \"is_active\": true,\n                    \"last_name\": \"De Coco1\",\n                    \"first_name\": \"Nata1\"\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add LR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation AddLearningResource($input: learning_resourceInsertInput!) {\n    insertIntolearning_resourceCollection(objects: [$input]) {\n        affectedCount\n        records {\n            id\n            type_id\n            name\n            url\n            description\n            deadline_at\n            is_mandatory\n            created_at\n        }\n    }\n}",
+						"variables": "{\n    \"input\": \n    {\n        \"type_id\": 3,\n        \"name\": \"learning resource 3\",\n        \"url\": \"www.learning.com\",\n        \"description\": \"sample learning resource 3\",\n        \"deadline_at\": \"2025-12-31T15:55:00+00:00\",\n        \"is_mandatory\": true\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation InsertIntolearning_resourceCollection($input: learning_resourceInsertInput!) {\n    insertIntolearning_resourceCollection(objects: [$input]) {\n        affectedCount\n        records {\n            id\n            type_id\n            name\n            url\n            description\n            deadline_at\n            is_mandatory\n            created_at\n        }\n    }\n}",
+								"variables": "{\n    \"input\": \n    {\n        \"type_id\": 3,\n        \"name\": \"learning resource 3\",\n        \"url\": \"www.learning.com\",\n        \"description\": \"sample learning resource 3\",\n        \"deadline_at\": \"2025-12-31T15:55:00+00:00\",\n        \"is_mandatory\": true\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 13:35:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f91efacce8bdb23-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "92"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "231"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"insertIntolearning_resourceCollection\": {\n            \"records\": [\n                {\n                    \"id\": 7,\n                    \"url\": \"www.learning.com\",\n                    \"name\": \"learning resource 3\",\n                    \"type_id\": 3,\n                    \"created_at\": \"2024-12-28T13:35:54.936844+00:00\",\n                    \"deadline_at\": \"2025-12-31T15:55:00+00:00\",\n                    \"description\": \"sample learning resource 3\",\n                    \"is_mandatory\": true\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update LR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation UpdateLearningResource($resourceId: Int!, $resourceDetails: learning_resourceUpdateInput!) {\n    updatelearning_resourceCollection(\n        set: $resourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $resourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                type_id\n                name\n                description\n                url\n                deadline_at\n                is_mandatory\n                learning_resource_type {\n                    id\n                    name\n                }\n            }\n        }\n}\n",
+						"variables": "{\n    \"resourceId\": 5,\n    \"resourceDetails\": \n        {\n            \"type_id\": 2,\n            \"name\": \"Learning Resource update 1\",\n            \"description\": \"Learning Resource description update 1\",\n            \"url\": \"www.updated1.com\",\n            \"deadline_at\": \"2026-12-31T15:55:00+00:00\",\n            \"is_mandatory\": false\n        }\n    \n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation UpdateUser($resourceId: Int!, $resourceDetails: learning_resourceUpdateInput!) {\n    updatelearning_resourceCollection(\n        set: $resourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $resourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                type_id\n                name\n                description\n                url\n                deadline_at\n                is_mandatory\n                learning_resource_type {\n                    id\n                    name\n                }\n            }\n        }\n}\n",
+								"variables": "{\n    \"resourceId\": 5,\n    \"resourceDetails\": \n        {\n            \"type_id\": 2,\n            \"name\": \"Learning Resource update 1\",\n            \"description\": \"Learning Resource description update 1\",\n            \"url\": \"www.updated1.com\",\n            \"deadline_at\": \"2026-12-31T15:55:00+00:00\",\n            \"is_mandatory\": false\n        }\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 13:50:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f9204c73af8db23-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "9"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "230"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"updatelearning_resourceCollection\": {\n            \"records\": [\n                {\n                    \"id\": 5,\n                    \"url\": \"www.updated1.com\",\n                    \"name\": \"Learning Resource update 1\",\n                    \"type_id\": 2,\n                    \"deadline_at\": \"2026-12-31T15:55:00+00:00\",\n                    \"description\": \"Learning Resource description update 1\",\n                    \"is_mandatory\": false,\n                    \"learning_resource_type\": {\n                        \"id\": 2,\n                        \"name\": \"Classroom\"\n                    }\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Assign LR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation AssignLearningResource($input: assigned_learning_resourceInsertInput!) {\n    insertIntoassigned_learning_resourceCollection(objects: [$input]) {\n        affectedCount\n        records {\n            id\n            user {\n                id\n                first_name\n                last_name\n            }\n            learning_resource {\n                id\n                name\n            }\n            resource_status {\n                id\n                name\n            }\n            created_at\n        }\n    }\n}",
+						"variables": "{\n    \"input\": \n    {\n        \"user_id\": 1,\n        \"resource_id\": 1,\n        \"status_id\": 1\n    }\n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation AssignLearningResource($input: assigned_learning_resourceInsertInput!) {\n    insertIntoassigned_learning_resourceCollection(objects: [$input]) {\n        affectedCount\n        records {\n            id\n            user {\n                id\n                first_name\n                last_name\n            }\n            learning_resource {\n                id\n                name\n            }\n            resource_status {\n                id\n                name\n            }\n            created_at\n        }\n    }\n}",
+								"variables": "{\n    \"input\": \n    {\n        \"user_id\": 1,\n        \"resource_id\": 1,\n        \"status_id\": 1\n    }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 13:55:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f920cf70eabdb1e-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "80"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "250"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"insertIntoassigned_learning_resourceCollection\": {\n            \"records\": [\n                {\n                    \"id\": \"5\",\n                    \"user\": {\n                        \"id\": 1,\n                        \"last_name\": \"Martian\",\n                        \"first_name\": \"Marvin\"\n                    },\n                    \"created_at\": \"2024-12-28T13:55:54.647244+00:00\",\n                    \"resource_status\": {\n                        \"id\": 1,\n                        \"name\": \"Not Started\"\n                    },\n                    \"learning_resource\": {\n                        \"id\": 1,\n                        \"name\": \"Ethics, Integrity and Sexual Harassment Training\"\n                    }\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Start Assigned LR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation StartAssignedLearningResource($assignedResourceId: BigInt!, $assignedResourceDetails: assigned_learning_resourceUpdateInput!) {\n    updateassigned_learning_resourceCollection(\n        set: $assignedResourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $assignedResourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                user {\n                    id\n                    first_name\n                    last_name\n                }\n                learning_resource {\n                    id\n                    name\n                }\n                resource_status {\n                    id\n                    name\n                }\n                started_at\n                completed_at\n                modified_at\n            }\n        }\n}\n",
+						"variables": "{\n    \"assignedResourceId\": 5,\n    \"assignedResourceDetails\": \n        {\n            \"status_id\": 2,\n            \"started_at\": \"2025-01-01T15:55:00+00:00\",\n            \"modified_at\": \"2025-01-01T15:55:00+00:00\"\n        }\n    \n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation StartAssignedLearningResource($assignedResourceId: BigInt!, $assignedResourceDetails: assigned_learning_resourceUpdateInput!) {\n    updateassigned_learning_resourceCollection(\n        set: $assignedResourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $assignedResourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                user {\n                    id\n                    first_name\n                    last_name\n                }\n                learning_resource {\n                    id\n                    name\n                }\n                resource_status {\n                    id\n                    name\n                }\n                started_at\n                completed_at\n                modified_at\n            }\n        }\n}\n",
+								"variables": "{\n    \"assignedResourceId\": 5,\n    \"assignedResourceDetails\": \n        {\n            \"status_id\": 2,\n            \"started_at\": \"2025-01-01T15:55:00+00:00\",\n            \"modified_at\": \"2025-01-01T15:55:00+00:00\",\n            \"completed_at\": null\n        }\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 14:17:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f922c019ea7db1c-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "7"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "260"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"updateassigned_learning_resourceCollection\": {\n            \"records\": [\n                {\n                    \"id\": \"5\",\n                    \"user\": {\n                        \"id\": 1,\n                        \"last_name\": \"Martian\",\n                        \"first_name\": \"Marvin\"\n                    },\n                    \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                    \"modified_at\": \"2025-01-01T15:55:00+00:00\",\n                    \"completed_at\": null,\n                    \"resource_status\": {\n                        \"id\": 2,\n                        \"name\": \"In Progress\"\n                    },\n                    \"learning_resource\": {\n                        \"id\": 1,\n                        \"name\": \"Ethics, Integrity and Sexual Harassment Training\"\n                    }\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Complete Assigned LR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CompleteAssignedLearningResource($assignedResourceId: BigInt!, $assignedResourceDetails: assigned_learning_resourceUpdateInput!) {\n    updateassigned_learning_resourceCollection(\n        set: $assignedResourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $assignedResourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                user {\n                    id\n                    first_name\n                    last_name\n                }\n                learning_resource {\n                    id\n                    name\n                }\n                resource_status {\n                    id\n                    name\n                }\n                started_at\n                completed_at\n                modified_at\n            }\n        }\n}\n",
+						"variables": "{\n    \"assignedResourceId\": 5,\n    \"assignedResourceDetails\": \n        {\n            \"status_id\": 3,\n            \"completed_at\": \"2025-01-02T15:55:00+00:00\",\n            \"modified_at\": \"2025-01-02T15:55:00+00:00\"\n        }\n    \n}"
+					}
+				},
+				"url": {
+					"raw": "{{graphql_url}}",
+					"host": [
+						"{{graphql_url}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CompleteAssignedLearningResource($assignedResourceId: BigInt!, $assignedResourceDetails: assigned_learning_resourceUpdateInput!) {\n    updateassigned_learning_resourceCollection(\n        set: $assignedResourceDetails, \n        atMost: 1, \n        filter: { id: { eq: $assignedResourceId } }) \n        {\n            affectedCount\n            records {\n                id\n                user {\n                    id\n                    first_name\n                    last_name\n                }\n                learning_resource {\n                    id\n                    name\n                }\n                resource_status {\n                    id\n                    name\n                }\n                started_at\n                completed_at\n                modified_at\n            }\n        }\n}\n",
+								"variables": "{\n    \"assignedResourceId\": 5,\n    \"assignedResourceDetails\": \n        {\n            \"status_id\": 3,\n            \"completed_at\": \"2025-01-02T15:55:00+00:00\",\n            \"modified_at\": \"2025-01-02T15:55:00+00:00\"\n        }\n    \n}"
+							}
+						},
+						"url": {
+							"raw": "{{graphql_url}}",
+							"host": [
+								"{{graphql_url}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 28 Dec 2024 14:17:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Range",
+							"value": "0-0/*"
+						},
+						{
+							"key": "CF-Ray",
+							"value": "8f922ce18ae5db1c-MNL"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "content-profile",
+							"value": "graphql_public"
+						},
+						{
+							"key": "sb-gateway-version",
+							"value": "1"
+						},
+						{
+							"key": "sb-project-ref",
+							"value": "rjtezqqbmcpujhvadccw"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-envoy-attempt-count",
+							"value": "1"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "74"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Content-Length",
+							"value": "256"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"updateassigned_learning_resourceCollection\": {\n            \"records\": [\n                {\n                    \"id\": \"5\",\n                    \"user\": {\n                        \"id\": 1,\n                        \"last_name\": \"Martian\",\n                        \"first_name\": \"Marvin\"\n                    },\n                    \"started_at\": \"2025-01-01T15:55:00+00:00\",\n                    \"modified_at\": \"2025-01-02T15:55:00+00:00\",\n                    \"completed_at\": \"2025-01-02T15:55:00+00:00\",\n                    \"resource_status\": {\n                        \"id\": 3,\n                        \"name\": \"Completed\"\n                    },\n                    \"learning_resource\": {\n                        \"id\": 1,\n                        \"name\": \"Ethics, Integrity and Sexual Harassment Training\"\n                    }\n                }\n            ],\n            \"affectedCount\": 1\n        }\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{anon_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apiKey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

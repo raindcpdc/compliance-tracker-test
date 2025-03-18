@@ -1,0 +1,99 @@
+<div>
+  <div class="flex flex-col space-y-1.5 py-6">
+    <div class="grid">
+      <div class="col-span-1">
+        <h1 class="font-semibold tracking-tight text-2xl">
+          My Mandatory trainings
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Track and update my progress on required trainings
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <!-- Progress bar -->
+    <div class="flex flex-col gap-2">
+      <p class="text-sm font-medium">Overall completion</p>
+      <brn-progress
+        class="h-3 bg-secondary relative overflow-hidden rounded-full"
+        [value]="progress"
+      >
+        <brn-progress-indicator
+          class="rounded-full absolute transition-none"
+          hlm
+        />
+      </brn-progress>
+      <p class="text-sm text-muted-foreground">
+        {{ trainingsCompleted }} of {{ trainingsTotal }} trainings completed
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-5">
+      <hlm-table class="grid grid-cols-12">
+        <hlm-trow class="col-span-12 grid grid-cols-12">
+          <hlm-th class="col-span-5">Training Name</hlm-th>
+          <hlm-th class="col-span-2">Due date</hlm-th>
+          <hlm-th class="col-span-3">Status</hlm-th>
+          <hlm-th class="col-span-2">Actions</hlm-th>
+        </hlm-trow>
+        <div
+          *ngIf="loading; else myTrainingListTable"
+          class="col-span-12 flex justify-center p-5"
+        >
+          <hlm-spinner />
+        </div>
+        <!-- When list is empty -->
+        <div
+          *ngIf="!loading && myTrainingsData.length === 0"
+          class="col-span-12 text-center my-5 text-gray-500"
+        >
+          No trainings assigned.
+        </div>
+
+        <ng-template #myTrainingListTable>
+          <hlm-trow
+            *ngFor="let training of myTrainingsData"
+            class="col-span-12 grid grid-cols-12"
+          >
+            <hlm-td class="col-span-5 flex flex-col items-start">
+              <!-- TODO: how to route this link -->
+              <a
+                class="font-medium text-base"
+                [href]="training.trainingUrl"
+                target="_blank"
+                >{{ training.trainingName }}</a
+              >
+              <p className="text-sm text-muted-foreground">
+                {{ training.trainingDesc }}
+              </p>
+            </hlm-td>
+            <hlm-td class="col-span-2">{{
+              training.dueDate | date : "MMM dd, YYYY"
+            }}</hlm-td>
+            <hlm-td class="col-span-3">{{ training.status }}</hlm-td>
+            <hlm-td class="col-span-2">
+              <brn-select class="inline-block w-full" placeholder="Select">
+                <hlm-select-trigger class="w-full">
+                  <span>Select</span>
+                </hlm-select-trigger>
+                <hlm-select-content>
+                  <div *ngFor="let option of options">
+                    <hlm-option
+                      class="p-2 flex justify-center"
+                      [hasIcon]="false"
+                      [value]="option.value"
+                    >
+                      {{ option.label }}
+                    </hlm-option>
+                  </div>
+                </hlm-select-content>
+              </brn-select>
+            </hlm-td>
+          </hlm-trow>
+        </ng-template>
+      </hlm-table>
+    </div>
+  </div>
+</div>

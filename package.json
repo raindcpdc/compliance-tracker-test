@@ -1,0 +1,20 @@
+{
+  "name": "fed-compliance-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/next-app",
+    "apps/angular-app",
+    "apps/backend"
+  ],
+  "scripts": {
+    "next-dev": "yarn workspace next-app dev",
+    "ng-dev": "yarn workspace angular-app dev",
+    "build": "turbo run build",
+    "start:backend": "yarn workspaces backend start",
+    "start:next": "yarn workspace next-app dev",
+    "start:ng": "yarn workspace angular-app start",
+    "sb-next": "yarn workspace next-app storybook",
+    "sb-ng": "yarn workspace angular-app storybook"
+  }
+}
