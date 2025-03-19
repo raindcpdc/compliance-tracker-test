@@ -8,13 +8,15 @@
     "apps/backend"
   ],
   "scripts": {
-    "next-dev": "yarn workspace next-app dev",
-    "ng-dev": "yarn workspace angular-app dev",
-    "build": "turbo run build",
-    "start:backend": "yarn workspaces backend start",
-    "start:next": "yarn workspace next-app dev",
-    "start:ng": "yarn workspace angular-app start",
-    "sb-next": "yarn workspace next-app storybook",
-    "sb-ng": "yarn workspace angular-app storybook"
+  "next-dev": "yarn workspace next-app dev",
+  "ng-dev": "yarn workspace angular-app dev",
+  "build": "turbo run build",
+  "build:next": "turbo run build --filter=next-app",
+  "build:ng": "turbo run build --filter=angular-app",
+  "start:backend": "yarn workspace backend start",
+  "start:next": "yarn workspace next-app start",
+  "start:ng": "yarn workspace angular-app start",
+  "sb-next": "yarn workspace next-app storybook",
+  "sb-ng": "yarn workspace angular-app storybook"
   }
 }
