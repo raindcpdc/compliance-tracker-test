@@ -3,8 +3,8 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 
-const SUPABASE_URL = process.env.SUPABASE_URL!
-const KEY = process.env.SUPABASE_API_KEY!
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
 
 /**
  * Handles the GET request for the authentication callback that contains the "code" parameter.
