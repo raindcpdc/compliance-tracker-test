@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "predev": "yarn codegen",
-    "build": "next build",
     "prebuild": "yarn codegen",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
