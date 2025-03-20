@@ -125,7 +125,7 @@ const UpdateTraining = (props: UpdateTrainingProps) => {
       setIsLoading(false)
     }
   }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const errorHandler = (error: any) => {
     console.error("errorHandler", error)
   }
