@@ -3,10 +3,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 
-const ENV = process.env.NODE_ENV!
-const AUTH_CALLBACK_URL = ENV === 'production'
-? 'https://mandatory-tracker-test.netlify.app/auth/callback'
-: 'http://localhost:3000/auth/callback'
+const AUTH_CALLBACK_URL = process.env.NEXT_PUBLIC_AUTH_CALLBACK!
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
 
@@ -20,7 +17,7 @@ export const signInWithGithub = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
-      redirectTo: AUTH_CALLBACK_URL
+      redirectTo: AUTH_CALLBACK_URL,
     },
   })
 
