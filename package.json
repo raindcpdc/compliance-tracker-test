@@ -7,16 +7,24 @@
     "apps/angular-app",
     "apps/backend"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "yarn@1.22.19",
   "scripts": {
-  "next-dev": "yarn workspace next-app dev",
-  "ng-dev": "yarn workspace angular-app dev",
-  "build": "turbo run build",
-  "build:next": "turbo run build --filter=next-app",
-  "build:ng": "turbo run build --filter=angular-app",
-  "start:backend": "yarn workspace backend start",
-  "start:next": "yarn workspace next-app start",
-  "start:ng": "yarn workspace angular-app start",
-  "sb-next": "yarn workspace next-app storybook",
-  "sb-ng": "yarn workspace angular-app storybook"
+    "next-dev": "yarn workspace next-app dev",
+    "ng-dev": "yarn workspace angular-app dev",
+    "build:next": "turbo run build --filter=next-app",
+    "build:ng": "turbo run build --filter=angular-app",
+    "start:backend": "yarn workspaces backend start",
+    "start:next": "yarn workspace next-app dev",
+    "start:ng": "yarn workspace angular-app start",
+    "sb-next": "yarn workspace next-app storybook",
+    "sb-ng": "yarn workspace angular-app storybook",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "turborepo": "^0.0.1"
   }
 }
