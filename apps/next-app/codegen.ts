@@ -1,7 +1,7 @@
 import "./envConfig.ts"
 import type { CodegenConfig } from "@graphql-codegen/cli"
 
-const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqdGV6cXFibWNwdWpodmFkY2N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM0NTYxNjQsImV4cCI6MjA0OTAzMjE2NH0.HnKiGAbAGPF8lcOw7XJcZRndGIpWIqF48E2mSpZHbmE'
+const API_KEY = process.env.SUPABASE_API_KEY!
 
 const config: CodegenConfig = {
   overwrite: true,
