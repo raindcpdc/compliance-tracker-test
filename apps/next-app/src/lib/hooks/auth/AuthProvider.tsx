@@ -129,8 +129,8 @@ export const AuthUserProvider = ({
 }
 
 export const AuthProvider = memo(({ children }: AuthProviderProps) => {
-  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
-  const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+  const SUPABASE_URL = 'https://rjtezqqbmcpujhvadccw.supabase.co'
+  const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqdGV6cXFibWNwdWpodmFkY2N3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM0NTYxNjQsImV4cCI6MjA0OTAzMjE2NH0.HnKiGAbAGPF8lcOw7XJcZRndGIpWIqF48E2mSpZHbmE'
   if (!SUPABASE_URL || !API_KEY) {
     throw new Error("URL or key not set")
   }
