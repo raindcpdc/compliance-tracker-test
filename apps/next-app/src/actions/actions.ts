@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server"
 
 const AUTH_CALLBACK_URL = process.env.NEXT_PUBLIC_AUTH_CALLBACK!
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+const KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const signInWithGithub = async () => {
   if (!SUPABASE_URL || !AUTH_CALLBACK_URL || !KEY) {
