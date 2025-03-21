@@ -1,7 +1,7 @@
 import "./envConfig.ts"
 import type { CodegenConfig } from "@graphql-codegen/cli"
 
-const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 const config: CodegenConfig = {
   overwrite: true,
