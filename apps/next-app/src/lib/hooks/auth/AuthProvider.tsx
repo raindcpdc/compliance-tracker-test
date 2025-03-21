@@ -130,7 +130,7 @@ export const AuthUserProvider = ({
 
 export const AuthProvider = memo(({ children }: AuthProviderProps) => {
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
-  const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+  const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   if (!SUPABASE_URL || !API_KEY) {
     throw new Error("URL or key not set")
   }
