@@ -4,7 +4,7 @@ import { getSupabaseUser } from "./lib/supabase/service"
 import { UserRoleType } from "./constants"
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 const updateSession = async (request: NextRequest) => {
   if (!SUPABASE_URL || !API_KEY) {
