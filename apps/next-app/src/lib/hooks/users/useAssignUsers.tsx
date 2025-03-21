@@ -8,7 +8,7 @@ import {
 } from "@/lib/graphql/queries"
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+const API_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const useAssignUsers = () => {
   const apiClient = useClient()
